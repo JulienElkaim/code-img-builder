@@ -1,0 +1,9 @@
+# Pi packages/extensions baked into the image, one per line (passed to `pi install`).
+# Versions are pinned (skipped by auto-update). Pi packages run with full system access: review before bumping.
+npm:@gotgenes/pi-permission-system@42.0.2
+npm:cc-safety-net@2.7.13
+npm:@narumitw/pi-plan-mode@0.60.1
+npm:pi-subagents@0.88.1
+npm:pi-background-tasks@2.6.10
+npm:pi-simplify@0.2.3
+npm:pi-btw@0.8.1

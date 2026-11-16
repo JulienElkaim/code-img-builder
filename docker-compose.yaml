@@ -1,0 +1,16 @@
+# TEAM mode: runs the image published on JFrog (PUBLISH_REPO in .env). Bump the tag on each release.
+#   podman compose run --rm asteroid-code <project>
+services:
+  asteroid-code:
+    image: ${PUBLISH_REPO:?Set PUBLISH_REPO in .env}/asteroid-code:1.0.0
+    working_dir: /workspace
+    stdin_open: true
+    tty: true
+    environment:
+      LITELLM_API_KEY: ${LITELLM_API_KEY:-}      # Windows env var, else .env
+      LITELLM_BASE_URL: ${LITELLM_BASE_URL:-}    # Windows env var, else .env
+    volumes:
+      - ${DEV_DIR:-./dev}:/workspace
+      - asteroid-sessions:/home/node/.pi/sessions
+volumes:
+  asteroid-sessions:

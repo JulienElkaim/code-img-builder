@@ -1,0 +1,22 @@
+# LOCAL mode: builds the image from ./image and runs it.
+#   podman compose -f docker-compose.local.yaml build
+#   podman compose -f docker-compose.local.yaml run --rm asteroid-code
+services:
+  asteroid-code:
+    image: asteroid-code:local
+    build:
+      context: ./image
+      args:
+        BASE_REPO: ${BASE_REPO:?Set BASE_REPO in .env}
+        NPM_REGISTRY: ${NPM_REGISTRY:?Set NPM_REGISTRY in .env}
+    working_dir: /workspace
+    stdin_open: true
+    tty: true
+    environment:
+      LITELLM_API_KEY: ${LITELLM_API_KEY:-}
+      LITELLM_BASE_URL: ${LITELLM_BASE_URL:-}
+    volumes:
+      - ${DEV_DIR:-./dev}:/workspace
+      - asteroid-sessions:/home/node/.pi/sessions
+volumes:
+  asteroid-sessions:

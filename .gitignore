@@ -1,0 +1,9 @@
+.env
+# Never commit built images or exports
+*.tar
+*.tar.gz
+*.tgz
+*.oci
+dist/
+workspace/
+**/.DS_Store
