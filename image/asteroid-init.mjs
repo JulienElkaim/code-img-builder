@@ -27,7 +27,7 @@ writeFileSync(join(dir, "models.json"), JSON.stringify({
   providers: { litellm: {
     baseUrl: base,
     api: "openai-completions",
-    apiKey: "LITELLM_API_KEY",
+    apiKey: "!printenv LITELLM_API_KEY",
     compat: { supportsDeveloperRole: false, supportsReasoningEffort: false },
     models: ids.map((id) => ({ id })),
   } },

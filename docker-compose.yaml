@@ -10,7 +10,9 @@ services:
       LITELLM_API_KEY: ${LITELLM_API_KEY:-}      # Windows env var, else .env
       LITELLM_BASE_URL: ${LITELLM_BASE_URL:-}    # Windows env var, else .env
     volumes:
-      - ${DEV_DIR:-./dev}:/workspace
-      - asteroid-sessions:/home/node/.pi/sessions
-volumes:
-  asteroid-sessions:
+      - type: bind          # long form: "C:/..." paths break the short "a:b" form
+        source: ${DEV_DIR:-./dev}
+        target: /workspace
+      - type: bind          # your personal Pi files: sessions, AGENTS.md, skills/, prompts/, mcp.json
+        source: ${DATA_DIR:-./data}
+        target: /home/node/.asteroid-code

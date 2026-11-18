@@ -1,6 +1,6 @@
 # Building and publishing the image (for maintainers)
 
-Everyday usage is in [README.md](README.md). Do the README setup first, and fill **all** of `.env` (`BASE_REPO`, `NPM_REGISTRY`, `PUBLISH_REPO`, `LITELLM_BASE_URL`, `LITELLM_API_KEY`). The image contains no LiteLLM URL and no key: they are only given at run time.
+Everyday usage is in [README.md](README.md). Do the README setup first, and fill **all** of `.env` (`BASE_REPO`, `NPM_REGISTRY`, `APT_REPO`, `APT_SECURITY_REPO`, `PUBLISH_REPO`, `LITELLM_BASE_URL`, `LITELLM_API_KEY`). The image contains no LiteLLM URL and no key: they are only given at run time.
 
 ## What's in the image
 
@@ -57,7 +57,7 @@ podman diff asteroid-tweak
 | You did | Put it in |
 |---|---|
 | `pi install npm:x@1.2.3` | `image/config/packages.txt` |
-| `apt-get install x` | the `apt-get install` line of `image/Dockerfile` |
+| `apt-get install x` | the `apt-get install` line of `image/Dockerfile` (packages come from `APT_REPO`) |
 | Changed Pi settings | `image/config/settings.json` |
 | Other Pi config or files | a `COPY` + `RUN` in `image/Dockerfile` |
 | New Pi version | `ARG PI_VERSION` in `image/Dockerfile` |

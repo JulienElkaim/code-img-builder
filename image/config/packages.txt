@@ -7,3 +7,5 @@ npm:pi-subagents@0.88.1
 npm:pi-background-tasks@2.6.10
 npm:pi-simplify@0.2.3
 npm:pi-btw@0.8.1
+npm:pi-provider-litellm@4.8.0
+npm:pi-fzfp@2.5.0

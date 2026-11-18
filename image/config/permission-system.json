@@ -1,0 +1,44 @@
+{
+  "doublePressToConfirm": false,
+  "permission": {
+    "*": "ask",
+    "path": {
+      "*": "allow",
+      "*.env": "deny",
+      "*.env.*": "deny",
+      "*.env.example": "allow",
+      "~/.ssh/*": "deny"
+    },
+    "read": "allow",
+    "grep": "allow",
+    "find": "allow",
+    "ls": "allow",
+    "skill": { "*": "allow" },
+    "bash": {
+      "*": "ask",
+      "pwd": "allow",
+      "ls *": "allow",
+      "cat *": "allow",
+      "head *": "allow",
+      "tail *": "allow",
+      "wc *": "allow",
+      "rg *": "allow",
+      "fd *": "allow",
+      "git status": "allow",
+      "git diff *": "allow",
+      "git log *": "allow",
+      "git show *": "allow",
+      "git branch *": "allow",
+      "git push *": { "action": "deny", "reason": "Push yourself, not the agent" }
+    },
+    "mcp": { "*": "ask", "mcp_status": "allow", "mcp_list": "allow" },
+    "external_directory": {
+      "*": "ask",
+      "/workspace/*": "allow",
+      "~/.pi/*": "allow",
+      "~/.asteroid-code/*": "allow",
+      "~/.agents/*": "allow",
+      "~/.agent/*": "allow"
+    }
+  }
+}

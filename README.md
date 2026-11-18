@@ -6,7 +6,8 @@ Maintaining or rebuilding the image: see [CREATEME.md](CREATEME.md).
 ## Setup (once)
 
 1. `cp .env.example .env`, then edit it:
-   - `DEV_DIR`: use `C:/Users/you/dev` (forward slashes, no `~`)
+   - `DEV_DIR`: Windows-style path even in Git Bash: `C:/Users/you/dev` (forward slashes, no `~`, not `/c/...`)
+   - `DATA_DIR`: your personal Pi folder, e.g. `C:/Users/you/.asteroid-code`. Create it once: `mkdir -p ~/.asteroid-code`
    - `PUBLISH_REPO`: the JFrog Docker repo of the team image
    - `LITELLM_BASE_URL` and `LITELLM_API_KEY`: **required, the image contains neither**. Put them in `.env`, or as Windows env vars (System Properties > Environment Variables, then open a NEW Git Bash). A Windows env var wins over `.env`.
 2. `podman machine start`.
@@ -31,6 +32,7 @@ podman compose run --rm asteroid-code              # Pi in ~/dev
 
 - `DEV_DIR` is `/workspace` in the container (IntelliJ sees edits live).
 - **Models** are fetched from `<LITELLM_BASE_URL>/models` each time `pi` starts. No fixed list. The URL should end with `/v1`.
+- **Your personal files** live in `DATA_DIR` and survive image updates: `sessions/` (history), `AGENTS.md` (global instructions), `skills/`, `prompts/`, `mcp.json`. Everything else in Pi's config (extensions, settings) comes from the image.
 - `.env` is git-ignored: never commit it.
 - Shell in the container: `... run --rm asteroid-code bash`.
 - Empty `/workspace`? Check `DEV_DIR` and that the folder is shared with `podman machine`.
