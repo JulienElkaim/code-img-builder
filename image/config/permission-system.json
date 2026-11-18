@@ -1,5 +1,6 @@
 {
   "doublePressToConfirm": false,
+  "piInfrastructureReadPaths": ["~/.pi/*", "~/.npm-global/*", "~/.asteroid-code/*", "~/.agents/*", "~/.agent/*"],
   "permission": {
     "*": "ask",
     "path": {
@@ -36,6 +37,7 @@
       "*": "ask",
       "/workspace/*": "allow",
       "~/.pi/*": "allow",
+      "~/.npm-global/*": "allow",
       "~/.asteroid-code/*": "allow",
       "~/.agents/*": "allow",
       "~/.agent/*": "allow"
